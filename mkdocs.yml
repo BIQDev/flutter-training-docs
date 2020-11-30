@@ -1,0 +1,32 @@
+site_name: Flutter training
+site_author: bayu@biqdev.com
+site_url: https://biqdev.com/tutorial/flutter-training
+dev_addr: 0.0.0.0:8080
+
+# https://squidfunk.github.io/mkdocs-material/
+theme:
+  name: 'material'
+  include_sidebar: true
+  language: id
+  font:
+    text: Roboto
+    code: Roboto Mono
+  favicon: assets/images/favicon.ico
+  logo: assets/images/biq-logo.png
+  i18n:
+    prev: 'Previous'
+    next: 'Next'
+
+markdown_extensions:
+  - attr_list
+  - pymdownx.highlight:
+      use_pygments: true
+      linenums: true
+  - pymdownx.superfences
+
+nav:
+  - 'Welcome': 'index.md'
+  - 'CRUD REST API':
+    - 'Overview': 'crud-rest-api/overview.md'
+    - 'Grid Setup': 'crud-rest-api/grid-setup.md'
+    - 'Provider': 'crud-rest-api/provider.md'
