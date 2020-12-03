@@ -13,8 +13,8 @@ Daftar buku pada "Grid view", tiap buku akan ditampilkan dengan sebuah widget ya
 ### Setup asset
 Langkah awal, kita buat "mockup" dari widget yang akan menampilkan buku. Sebelumya kita setup dulu "asset" yang kita perlukan untuk "preview". Yaitu gambar buku sebagai bagian icon.
 
-Untuk itu, kita sudah memiliki sebuah file gambar pada `assets/mock/book.png`. Kita tinggal import pada file : `pubspec.yaml` setelah baris 53, sehingga menjadi seperti ini:
-```yaml linenums="52" hl_lines="3"
+Untuk itu, kita sudah memiliki sebuah file gambar pada `assets/mock/book.png`. Kita tinggal import pada file : `pubspec.yaml` setelah baris 51, sehingga menjadi seperti ini:
+```yaml linenums="50" hl_lines="3"
   assets:
     - assets/icon/icon-710x710-android.png
     - assets/mock/book.png
