@@ -7,7 +7,7 @@ Flutter memiliki sebuah class yang bernama `GridView`. Class tersebut bertujuan 
 
 Terdapat berbagai macam metode yang bisa digunakan untuk menginstanisasi class tersebut. Namun untuk tujuan dinamis seperti pada project CRUD ini, dimana jumlah "child" dari grid yang ditampilkan akan berubah-ubah, maka akan lebih tepat untuk menggunakan constructor `GridView.builder()`. Constuctor lain seperti `GridView.count()`, lebih tepat digunakan untuk menampilkan grid "child" yang jumlahnya tetap dan telah ditentukan. Seperti bisa dibaca pada dokumentasi resmi flutter: [https://api.flutter.dev/flutter/widgets/GridView-class.html](https://api.flutter.dev/flutter/widgets/GridView-class.html)
 
-## Grid item ( "grid child" )
+## Grid item / "grid child"
 Daftar buku pada "Grid view", tiap buku akan ditampilkan dengan sebuah widget yang bernama `Gridtile`. Widget tersebut adalah bawaan dari flutter, yang memang dikhususkan untuk menjadi "child" dari sebuah "Grid view". Meskipun sebenarnya kita buat widget sendiri ( custom widget ).
 
 ### Setup asset
@@ -54,7 +54,7 @@ Kita hapus dan ubah dengan widget `GridTile` sebagai berikut:
 
 Simpan, dan seharusnya, setelah selesai "hot reload" kita mendapatkan tampilan seperti berikut ini:
 
-![Grid item preview](../assets/images/crud/crud-1.2.png){: style="height:auto;width:350px"}
+![Grid item preview](../assets/images/crud/crud-1.2.png){: style="height:auto;width:250px"}
 
 ### Buat "custom widget" grid item
 Setelah cukup puas dengan "mockup" pada tampilan Grid Item kita, pindahkan `GridTile()` ke widget terpisah. Hal ini memudahkan kita untuk mengembangkan Grid Item tersebut lebih detail secara terpisah dan substansial.
@@ -130,6 +130,6 @@ Beralih kembali ke file `lib/widgets/home/book-list-item.dart` buat baris baru s
 
 Akan muncul 2 tombol pada bagian *header* dari "grid item" seperti pada screenshot berikut:
 
-![Grid item header](../assets/images/crud/crud-1.3.png){: style="width: 350px; height: auto;"}
+![Grid item header](../assets/images/crud/crud-1.3.png){: style="width: 250px; height: auto;"}
 
 Saat ini tombolnya masih belum memiliki fungsi apa pun, segera kita akan mem-*bind* fungsi *update* dan *delete* ke tombol tersebut.

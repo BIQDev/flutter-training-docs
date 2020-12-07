@@ -23,6 +23,9 @@ markdown_extensions:
       use_pygments: true
 #      linenums: true
   - pymdownx.superfences
+  - pymdownx.emoji:
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:materialx.emoji.to_svg
 
 nav:
   - 'Welcome': 'index.md'
@@ -30,3 +33,6 @@ nav:
     - 'Overview': 'crud-rest-api/overview.md'
     - 'Grid Setup': 'crud-rest-api/grid-setup.md'
     - 'Provider': 'crud-rest-api/provider.md'
+    - 'Provider setup': 'crud-rest-api/provider-setup.md'
+
+copyright: "Copyright &copy; 2020 www.biqdev.com;"
