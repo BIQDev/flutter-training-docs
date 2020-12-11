@@ -34,5 +34,6 @@ nav:
     - 'Grid Setup': 'crud-rest-api/grid-setup.md'
     - 'Provider': 'crud-rest-api/provider.md'
     - 'Provider setup': 'crud-rest-api/provider-setup.md'
+    - 'Booklist mockup': 'crud-rest-api/booklist-mockup.md'
 
 copyright: "Copyright &copy; 2020 www.biqdev.com;"
