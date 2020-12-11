@@ -282,7 +282,7 @@ class _BookInputScreenState extends State<BookInputScreen> {
 
 1. Coba input data judul dan gambar
 1. Click simpan
-1. Check https://perpus-api.biqdev.com/perpus-api/booklist/<nama_user>
+1. Check https://perpus-api.biqdev.com/perpus-api/booklist/**&lt;nama_user&gt;**
 
 untuk **&lt;nama_user&gt;** diatas adalah sesuai setting yang kita masukkan pada step **[SettingProvider](provider-setup.md#settingprovider)**
 
