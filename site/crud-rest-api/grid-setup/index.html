@@ -1,0 +1,697 @@
+
+<!doctype html>
+<html lang="id" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://biqdev.com/tutorial/flutter-training/crud-rest-api/grid-setup/">
+      
+      
+        <meta name="author" content="bayu@biqdev.com">
+      
+      <link rel="shortcut icon" href="../../assets/images/favicon.ico">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-6.1.6">
+    
+    
+      
+        <title>Grid Setup - Flutter training</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.6910b76c.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.196e0c26.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+      
+  
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#grid-setup" class="md-skip">
+          Lewati ke isi
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href="https://biqdev.com/tutorial/flutter-training" title="Flutter training" class="md-header-nav__button md-logo" aria-label="Flutter training">
+      
+  <img src="../../assets/images/biq-logo.png" alt="logo">
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      
+        <div class="md-header-nav__ellipsis">
+          <span class="md-header-nav__topic md-ellipsis">
+            Flutter training
+          </span>
+          <span class="md-header-nav__topic md-ellipsis">
+            
+              Grid Setup
+            
+          </span>
+        </div>
+      
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Cari" placeholder="Cari" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="https://biqdev.com/tutorial/flutter-training" title="Flutter training" class="md-nav__button md-logo" aria-label="Flutter training">
+      
+  <img src="../../assets/images/biq-logo.png" alt="logo">
+
+    </a>
+    Flutter training
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../.." class="md-nav__link">
+      Welcome
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2" checked>
+    <label class="md-nav__link" for="nav-2">
+      CRUD REST API
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="CRUD REST API" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        <span class="md-nav__icon md-icon"></span>
+        CRUD REST API
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../overview/" class="md-nav__link">
+      Overview
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Grid Setup
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+    
+    <a href="./" class="md-nav__link md-nav__link--active">
+      Grid Setup
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="Daftar isi">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Daftar isi
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#gridviewbuilder" class="md-nav__link">
+    GridView.builder()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#grid-item-grid-child" class="md-nav__link">
+    Grid item / "grid child"
+  </a>
+  
+    <nav class="md-nav" aria-label="Grid item / "grid child"">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#setup-asset" class="md-nav__link">
+    Setup asset
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mock-tampilan-buku" class="md-nav__link">
+    "mock" tampilan buku
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#buat-custom-widget-grid-item" class="md-nav__link">
+    Buat "custom widget" grid item
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#grid-item-detail" class="md-nav__link">
+    Grid item detail
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../provider/" class="md-nav__link">
+      Provider
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../provider-setup/" class="md-nav__link">
+      Provider setup
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../booklist-mockup/" class="md-nav__link">
+      Booklist mockup
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../create/" class="md-nav__link">
+      (C)reate
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Daftar isi">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Daftar isi
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#gridviewbuilder" class="md-nav__link">
+    GridView.builder()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#grid-item-grid-child" class="md-nav__link">
+    Grid item / "grid child"
+  </a>
+  
+    <nav class="md-nav" aria-label="Grid item / "grid child"">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#setup-asset" class="md-nav__link">
+    Setup asset
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mock-tampilan-buku" class="md-nav__link">
+    "mock" tampilan buku
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#buat-custom-widget-grid-item" class="md-nav__link">
+    Buat "custom widget" grid item
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#grid-item-detail" class="md-nav__link">
+    Grid item detail
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="grid-setup">Grid setup</h1>
+<p>Langkah awal, kita akan mulai dengan mensetup pada bagian "Grid". Ini adalah bagian utama yang akan menampilkan daftar buku yang diinput</p>
+<p>Pertama, download source code dari: <a href="https://github.com/BIQDev/unisnu-flutter-2020.11/tree/crud-0">https://github.com/BIQDev/unisnu-flutter-2020.11/tree/crud-0</a></p>
+<h2 id="gridviewbuilder">GridView.builder()</h2>
+<p>Flutter memiliki sebuah class yang bernama <code>GridView</code>. Class tersebut bertujuan untuk mengatur layout dalam tampilan "grid".</p>
+<p>Terdapat berbagai macam metode yang bisa digunakan untuk menginstanisasi class tersebut. Namun untuk tujuan dinamis seperti pada project CRUD ini, dimana jumlah "child" dari grid yang ditampilkan akan berubah-ubah, maka akan lebih tepat untuk menggunakan constructor <code>GridView.builder()</code>. Constuctor lain seperti <code>GridView.count()</code>, lebih tepat digunakan untuk menampilkan grid "child" yang jumlahnya tetap dan telah ditentukan. Seperti bisa dibaca pada dokumentasi resmi flutter: <a href="https://api.flutter.dev/flutter/widgets/GridView-class.html">https://api.flutter.dev/flutter/widgets/GridView-class.html</a></p>
+<h2 id="grid-item-grid-child">Grid item / "grid child"</h2>
+<p>Daftar buku pada "Grid view", tiap buku akan ditampilkan dengan sebuah widget yang bernama <code>Gridtile</code>. Widget tersebut adalah bawaan dari flutter, yang memang dikhususkan untuk menjadi "child" dari sebuah "Grid view". Meskipun sebenarnya kita buat widget sendiri ( custom widget ).</p>
+<h3 id="setup-asset">Setup asset</h3>
+<p>Langkah awal, kita buat "mockup" dari widget yang akan menampilkan buku. Sebelumya kita setup dulu "asset" yang kita perlukan untuk "preview". Yaitu gambar buku sebagai bagian icon.</p>
+<p>Untuk itu, kita sudah memiliki sebuah file gambar pada <code>assets/mock/book.png</code>. Kita tinggal import pada file : <code>pubspec.yaml</code> setelah baris 51, sehingga menjadi seperti ini:
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>50
+51
+52</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>  <span class="nt">assets</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">assets/icon/icon-710x710-android.png</span>
+<span class="hll">    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">assets/mock/book.png</span>
+</span></code></pre></div>
+</td></tr></table></p>
+<h3 id="mock-tampilan-buku">"mock" tampilan buku</h3>
+<p>Setelah asset di deklarasikan pada file <code>pubspec.yaml</code> diatas, gambar tersebut akan kita tampilkan pada "mock" dari <code>GridTile</code>.</p>
+<p>Buka file <code>lib/widgets/home/book-list.dart</code>. Pada baris ke-14 dengan code:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>14</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nl">itemBuilder:</span> <span class="p">(</span><span class="n">ctx</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="n">Text</span><span class="p">(</span><span class="s2">&quot;Dummy&quot;</span><span class="p">),</span>
+</code></pre></div>
+</td></tr></table>
+<p>Kita hapus dan ubah dengan widget <code>GridTile</code> sebagai berikut:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>      <span class="nl">itemBuilder:</span> <span class="p">(</span><span class="n">ctx</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="n">GridTile</span><span class="p">(</span>
+        <span class="nl">child:</span> <span class="n">Image</span><span class="p">.</span><span class="n">asset</span><span class="p">(</span>
+          <span class="s2">&quot;assets/mock/book.png&quot;</span><span class="p">,</span>
+          <span class="nl">width:</span> <span class="m">80</span><span class="p">,</span>
+          <span class="nl">height:</span> <span class="m">80</span><span class="p">,</span>
+          <span class="nl">fit:</span> <span class="n">BoxFit</span><span class="p">.</span><span class="n">cover</span><span class="p">,</span>
+        <span class="p">),</span>
+        <span class="nl">footer:</span> <span class="n">GridTileBar</span><span class="p">(</span>
+          <span class="nl">backgroundColor:</span> <span class="n">Colors</span><span class="p">.</span><span class="n">black54</span><span class="p">,</span>
+          <span class="nl">title:</span> <span class="n">Text</span><span class="p">(</span><span class="s2">&quot;Judulnya&quot;</span><span class="p">),</span>
+          <span class="nl">trailing:</span> <span class="n">IconButton</span><span class="p">(</span>
+            <span class="nl">splashColor:</span> <span class="n">Colors</span><span class="p">.</span><span class="n">red</span><span class="p">[</span><span class="m">400</span><span class="p">],</span>
+            <span class="nl">icon:</span> <span class="n">Icon</span><span class="p">(</span><span class="n">Icons</span><span class="p">.</span><span class="n">favorite</span><span class="p">),</span>
+            <span class="nl">onPressed:</span> <span class="p">()</span> <span class="p">{},</span>
+          <span class="p">),</span>
+        <span class="p">),</span>
+      <span class="p">),</span>
+</code></pre></div>
+</td></tr></table>
+<p>Simpan, dan seharusnya, setelah selesai "hot reload" kita mendapatkan tampilan seperti berikut ini:</p>
+<p><img alt="Grid item preview" src="../../assets/images/crud/crud-1.2.png" style="height:auto;width:250px" /></p>
+<h3 id="buat-custom-widget-grid-item">Buat "custom widget" grid item</h3>
+<p>Setelah cukup puas dengan "mockup" pada tampilan Grid Item kita, pindahkan <code>GridTile()</code> ke widget terpisah. Hal ini memudahkan kita untuk mengembangkan Grid Item tersebut lebih detail secara terpisah dan substansial.</p>
+<ol>
+<li>Buat file <code>lib/widgets/home/book-list-item.dart</code></li>
+<li>
+<p>Pindahkan <code>GridTile()</code> dari <code>lib/widgets/home/book-list.dart</code> line 14, pindahkan ke file baru diatas. Sehingga, file <code>lib/widgets/home/book-list-item.dart</code> akan menjadi seperti dibawah ini:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">import</span> <span class="s1">&#39;package:flutter/material.dart&#39;</span><span class="p">;</span>
+
+<span class="kd">class</span> <span class="nc">BookListItem</span> <span class="kd">extends</span> <span class="n">StatelessWidget</span> <span class="p">{</span>
+  <span class="nd">@override</span>
+  <span class="n">Widget</span> <span class="n">build</span><span class="p">(</span><span class="n">BuildContext</span> <span class="n">context</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">GridTile</span><span class="p">(</span>
+      <span class="nl">child:</span> <span class="n">Image</span><span class="p">.</span><span class="n">asset</span><span class="p">(</span>
+        <span class="s2">&quot;assets/mock/book.png&quot;</span><span class="p">,</span>
+        <span class="nl">width:</span> <span class="m">80</span><span class="p">,</span>
+        <span class="nl">height:</span> <span class="m">80</span><span class="p">,</span>
+        <span class="nl">fit:</span> <span class="n">BoxFit</span><span class="p">.</span><span class="n">cover</span><span class="p">,</span>
+      <span class="p">),</span>
+      <span class="nl">footer:</span> <span class="n">GridTileBar</span><span class="p">(</span>
+        <span class="nl">backgroundColor:</span> <span class="n">Colors</span><span class="p">.</span><span class="n">black54</span><span class="p">,</span>
+        <span class="nl">title:</span> <span class="n">Text</span><span class="p">(</span><span class="s2">&quot;Judulnya&quot;</span><span class="p">),</span>
+        <span class="nl">trailing:</span> <span class="n">IconButton</span><span class="p">(</span>
+          <span class="nl">splashColor:</span> <span class="n">Colors</span><span class="p">.</span><span class="n">red</span><span class="p">[</span><span class="m">400</span><span class="p">],</span>
+          <span class="nl">icon:</span> <span class="n">Icon</span><span class="p">(</span><span class="n">Icons</span><span class="p">.</span><span class="n">favorite</span><span class="p">),</span>
+          <span class="nl">onPressed:</span> <span class="p">()</span> <span class="p">{},</span>
+        <span class="p">),</span>
+      <span class="p">),</span>
+    <span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+</td></tr></table>
+</li>
+<li>
+<p>Pada file <code>lib/widgets/home/book-list.dart</code> line 3, Tambahkan:</p>
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4
+5
+6</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">import</span> <span class="s1">&#39;package:flutter/material.dart&#39;</span><span class="p">;</span>
+
+<span class="hll"><span class="k">import</span> <span class="s1">&#39;package:perpus/widgets/home/book-list-item.dart&#39;</span><span class="p">;</span>
+</span>
+<span class="kd">class</span> <span class="nc">BookList</span> <span class="kd">extends</span> <span class="n">StatefulWidget</span> <span class="p">{</span>
+<span class="p">...</span>
+</code></pre></div>
+</td></tr></table>
+   Kemudian line 16 menjadi
+   <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>16</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>      <span class="nl">itemBuilder:</span> <span class="p">(</span><span class="n">ctx</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="n">BookListItem</span><span class="p">(),</span>
+</code></pre></div>
+</td></tr></table></p>
+</li>
+</ol>
+<h3 id="grid-item-detail">Grid item detail</h3>
+<p>Pada bagian ini kita akan memberikan sedikit detail pada "grid item" kita. Terutama untuk tujuan navigasi yang berkaitan dengan CRUD, yaitu pada bagian <em>update</em> dan <em>delete</em></p>
+<p>Beralih kembali ke file <code>lib/widgets/home/book-list-item.dart</code> buat baris baru setelah baris ke-12. Pada baris ke-13, masukkan kode berikut:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>      <span class="nl">header:</span> <span class="n">Row</span><span class="p">(</span>
+        <span class="nl">mainAxisAlignment:</span> <span class="n">MainAxisAlignment</span><span class="p">.</span><span class="n">end</span><span class="p">,</span>
+        <span class="nl">children:</span> <span class="p">[</span>
+          <span class="n">IconButton</span><span class="p">(</span>
+            <span class="nl">splashColor:</span> <span class="n">Colors</span><span class="p">.</span><span class="n">orange</span><span class="p">[</span><span class="m">100</span><span class="p">],</span>
+            <span class="nl">color:</span> <span class="n">Colors</span><span class="p">.</span><span class="n">deepOrangeAccent</span><span class="p">,</span>
+            <span class="nl">icon:</span> <span class="n">Icon</span><span class="p">(</span><span class="n">Icons</span><span class="p">.</span><span class="n">edit</span><span class="p">),</span>
+            <span class="nl">onPressed:</span> <span class="p">()</span> <span class="p">{},</span>
+          <span class="p">),</span>
+          <span class="n">IconButton</span><span class="p">(</span>
+            <span class="nl">color:</span> <span class="n">Colors</span><span class="p">.</span><span class="n">redAccent</span><span class="p">,</span>
+            <span class="nl">icon:</span> <span class="n">Icon</span><span class="p">(</span><span class="n">Icons</span><span class="p">.</span><span class="n">delete</span><span class="p">),</span>
+            <span class="nl">onPressed:</span> <span class="p">()</span> <span class="p">{},</span>
+          <span class="p">),</span>
+        <span class="p">],</span>
+      <span class="p">),</span>
+</code></pre></div>
+</td></tr></table>
+<p>Akan muncul 2 tombol pada bagian <em>header</em> dari "grid item" seperti pada screenshot berikut:</p>
+<p><img alt="Grid item header" src="../../assets/images/crud/crud-1.3.png" style="width: 250px; height: auto;" /></p>
+<p>Saat ini tombolnya masih belum memiliki fungsi apa pun, segera kita akan mem-<em>bind</em> fungsi <em>update</em> dan <em>delete</em> ke tombol tersebut.</p>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
+        
+          <a href="../overview/" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+            </div>
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Sebelumnya
+                </span>
+                Overview
+              </div>
+            </div>
+          </a>
+        
+        
+          <a href="../provider/" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Selanjutnya
+                </span>
+                Provider
+              </div>
+            </div>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2020 www.biqdev.com;
+          </div>
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../assets/javascripts/vendor.fd16492e.min.js"></script>
+      <script src="../../assets/javascripts/bundle.7836ba4d.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Salin ke memori", "clipboard.copied": "Tersalin ke memori", "search.config.lang": "en", "search.config.pipeline": " ", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Cari", "search.result.placeholder": "Ketik untuk mulai pencarian", "search.result.none": "Tidak ada dokumen yang sesuai", "search.result.one": "1 dokumen ditemukan", "search.result.other": "# dokumen ditemukan", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}</script>
+      
+      <script>
+        app = initialize({
+          base: "../..",
+          features: [],
+          search: Object.assign({
+            worker: "../../assets/javascripts/worker/search.4ac00218.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+    
+  </body>
+</html>

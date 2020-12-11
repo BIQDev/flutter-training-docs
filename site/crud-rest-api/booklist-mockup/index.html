@@ -1,0 +1,812 @@
+
+<!doctype html>
+<html lang="id" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://biqdev.com/tutorial/flutter-training/crud-rest-api/booklist-mockup/">
+      
+      
+        <meta name="author" content="bayu@biqdev.com">
+      
+      <link rel="shortcut icon" href="../../assets/images/favicon.ico">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-6.1.6">
+    
+    
+      
+        <title>Booklist mockup - Flutter training</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.6910b76c.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.196e0c26.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+      
+  
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#book-list-mockup" class="md-skip">
+          Lewati ke isi
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href="https://biqdev.com/tutorial/flutter-training" title="Flutter training" class="md-header-nav__button md-logo" aria-label="Flutter training">
+      
+  <img src="../../assets/images/biq-logo.png" alt="logo">
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      
+        <div class="md-header-nav__ellipsis">
+          <span class="md-header-nav__topic md-ellipsis">
+            Flutter training
+          </span>
+          <span class="md-header-nav__topic md-ellipsis">
+            
+              Booklist mockup
+            
+          </span>
+        </div>
+      
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Cari" placeholder="Cari" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="https://biqdev.com/tutorial/flutter-training" title="Flutter training" class="md-nav__button md-logo" aria-label="Flutter training">
+      
+  <img src="../../assets/images/biq-logo.png" alt="logo">
+
+    </a>
+    Flutter training
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../.." class="md-nav__link">
+      Welcome
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2" checked>
+    <label class="md-nav__link" for="nav-2">
+      CRUD REST API
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="CRUD REST API" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        <span class="md-nav__icon md-icon"></span>
+        CRUD REST API
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../overview/" class="md-nav__link">
+      Overview
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../grid-setup/" class="md-nav__link">
+      Grid Setup
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../provider/" class="md-nav__link">
+      Provider
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../provider-setup/" class="md-nav__link">
+      Provider setup
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Booklist mockup
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+    
+    <a href="./" class="md-nav__link md-nav__link--active">
+      Booklist mockup
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="Daftar isi">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Daftar isi
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#siapkan-class-booklistitem" class="md-nav__link">
+    Siapkan class BookListItem
+  </a>
+  
+    <nav class="md-nav" aria-label="Siapkan class BookListItem">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#variable-dan-constructor" class="md-nav__link">
+    Variable dan constructor
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#implementasi-variable" class="md-nav__link">
+    implementasi variable
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dynamic-mockup" class="md-nav__link">
+    Dynamic Mockup
+  </a>
+  
+    <nav class="md-nav" aria-label="Dynamic Mockup">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#variable-mockup" class="md-nav__link">
+    Variable mockup
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#provider-mockup" class="md-nav__link">
+    Provider mockup
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../create/" class="md-nav__link">
+      (C)reate
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Daftar isi">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Daftar isi
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#siapkan-class-booklistitem" class="md-nav__link">
+    Siapkan class BookListItem
+  </a>
+  
+    <nav class="md-nav" aria-label="Siapkan class BookListItem">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#variable-dan-constructor" class="md-nav__link">
+    Variable dan constructor
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#implementasi-variable" class="md-nav__link">
+    implementasi variable
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dynamic-mockup" class="md-nav__link">
+    Dynamic Mockup
+  </a>
+  
+    <nav class="md-nav" aria-label="Dynamic Mockup">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#variable-mockup" class="md-nav__link">
+    Variable mockup
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#provider-mockup" class="md-nav__link">
+    Provider mockup
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="book-list-mockup">Book list Mockup</h1>
+<p>Setelah selesai dengan setup <strong>provider</strong>. Saatnya kita mulai dengan <em>mockup</em> "Book list" /daftar buku kita.</p>
+<h2 id="siapkan-class-booklistitem">Siapkan <code>class</code> BookListItem</h2>
+<p><code>class BookListItem</code>, saat ini masih dalam keadaat ter-<em>hardcode</em>. Artinya, judul, gambar dll kita tulis pada code dan akan selalu static(isinya sama).</p>
+<h3 id="variable-dan-constructor">Variable dan constructor</h3>
+<p>Langkah awal, kita siapkan <code>class BookListItem</code> untuk siap menggunakan variable yang akan kita terima dari REST API nantinya.</p>
+<p>Buka file <code>lib/widgets/home/book-list-item.dart</code>. Ubah sesuai baris yang ter-<em>highlight</em> berikut:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">import</span> <span class="s1">&#39;package:flutter/material.dart&#39;</span><span class="p">;</span>
+
+<span class="kd">class</span> <span class="nc">BookListItem</span> <span class="kd">extends</span> <span class="n">StatelessWidget</span> <span class="p">{</span>
+<span class="hll">  <span class="nd">@required</span>
+</span><span class="hll">  <span class="kd">final</span> <span class="kt">String</span> <span class="n">apiHost</span><span class="p">;</span>
+</span><span class="hll">  <span class="nd">@required</span>
+</span><span class="hll">  <span class="kd">final</span> <span class="kt">String</span> <span class="n">id</span><span class="p">;</span>
+</span><span class="hll">  <span class="nd">@required</span>
+</span><span class="hll">  <span class="kd">final</span> <span class="kt">String</span> <span class="n">title</span><span class="p">;</span>
+</span><span class="hll">  <span class="nd">@required</span>
+</span><span class="hll">  <span class="kd">final</span> <span class="kt">String</span> <span class="n">imagePath</span><span class="p">;</span>
+</span>
+<span class="hll">  <span class="n">BookListItem</span><span class="p">({</span><span class="k">this</span><span class="p">.</span><span class="n">apiHost</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="n">id</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="n">title</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="n">imagePath</span><span class="p">});</span>
+</span>
+  <span class="nd">@override</span>
+  <span class="n">Widget</span> <span class="n">build</span><span class="p">(</span><span class="n">BuildContext</span> <span class="n">context</span><span class="p">)</span> <span class="p">{</span>
+  <span class="p">...</span>
+</code></pre></div>
+</td></tr></table>
+<p>Pada code diatas, kita membuat variable yang <code>@required</code> saat instanisasi pada Constructor. Artinya, class tersebut mensyaratkan variable-variable tersebut selalu disertakan.</p>
+<h3 id="implementasi-variable">implementasi variable</h3>
+<p>Setelah pendeklarasian variable diatas, saatnya kita mengubah data-data yang saat ini ter-<em>hardcode</em>. Ubah sesuai baris yang ter-<em>highlight</em> berikut:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>  <span class="p">...</span>
+  <span class="nd">@override</span>
+  <span class="n">Widget</span> <span class="n">build</span><span class="p">(</span><span class="n">BuildContext</span> <span class="n">context</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">GridTile</span><span class="p">(</span>
+<span class="hll">      <span class="nl">child:</span> <span class="n">Image</span><span class="p">.</span><span class="n">network</span><span class="p">(</span>
+</span><span class="hll">        <span class="s2">&quot;</span><span class="si">${</span><span class="k">this</span><span class="p">.</span><span class="n">apiHost</span><span class="si">}</span><span class="s2">/perpus-api/</span><span class="si">${</span><span class="k">this</span><span class="p">.</span><span class="n">imagePath</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+</span>        <span class="nl">width:</span> <span class="m">80</span><span class="p">,</span>
+        <span class="nl">height:</span> <span class="m">80</span><span class="p">,</span>
+        <span class="nl">fit:</span> <span class="n">BoxFit</span><span class="p">.</span><span class="n">cover</span><span class="p">,</span>
+      <span class="p">),</span>
+      <span class="nl">header:</span> <span class="n">Row</span><span class="p">(</span>
+        <span class="nl">mainAxisAlignment:</span> <span class="n">MainAxisAlignment</span><span class="p">.</span><span class="n">end</span><span class="p">,</span>
+        <span class="nl">children:</span> <span class="p">[</span>
+          <span class="n">IconButton</span><span class="p">(</span>
+            <span class="nl">splashColor:</span> <span class="n">Colors</span><span class="p">.</span><span class="n">orange</span><span class="p">[</span><span class="m">100</span><span class="p">],</span>
+            <span class="nl">color:</span> <span class="n">Colors</span><span class="p">.</span><span class="n">deepOrangeAccent</span><span class="p">,</span>
+            <span class="nl">icon:</span> <span class="n">Icon</span><span class="p">(</span><span class="n">Icons</span><span class="p">.</span><span class="n">edit</span><span class="p">),</span>
+            <span class="nl">onPressed:</span> <span class="p">()</span> <span class="p">{},</span>
+          <span class="p">),</span>
+          <span class="n">IconButton</span><span class="p">(</span>
+            <span class="nl">color:</span> <span class="n">Colors</span><span class="p">.</span><span class="n">redAccent</span><span class="p">,</span>
+            <span class="nl">icon:</span> <span class="n">Icon</span><span class="p">(</span><span class="n">Icons</span><span class="p">.</span><span class="n">delete</span><span class="p">),</span>
+            <span class="nl">onPressed:</span> <span class="p">()</span> <span class="p">{},</span>
+          <span class="p">),</span>
+        <span class="p">],</span>
+      <span class="p">),</span>
+      <span class="nl">footer:</span> <span class="n">GridTileBar</span><span class="p">(</span>
+        <span class="nl">backgroundColor:</span> <span class="n">Colors</span><span class="p">.</span><span class="n">black54</span><span class="p">,</span>
+<span class="hll">        <span class="nl">title:</span> <span class="n">Text</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="n">title</span><span class="p">),</span>
+</span>        <span class="nl">trailing:</span> <span class="n">IconButton</span><span class="p">(</span>
+          <span class="nl">splashColor:</span> <span class="n">Colors</span><span class="p">.</span><span class="n">red</span><span class="p">[</span><span class="m">400</span><span class="p">],</span>
+          <span class="nl">icon:</span> <span class="n">Icon</span><span class="p">(</span><span class="n">Icons</span><span class="p">.</span><span class="n">favorite</span><span class="p">),</span>
+          <span class="nl">onPressed:</span> <span class="p">()</span> <span class="p">{},</span>
+        <span class="p">),</span>
+      <span class="p">),</span>
+    <span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+</td></tr></table>
+<p>Perubahan:</p>
+<ul>
+<li><strong>Line 18</strong>, kita rubah type <code>Image</code> yang sebelumnya <code>Image.asset</code> ( mengambil gambar dari local), menjadi <code>Image.network</code> ( mengambil gambar dari server HTTP)</li>
+<li><strong>Line 19</strong>, kita membentuk URL HTTP gambar dengan variable.</li>
+<li><strong>Line 42</strong>, kita gunakan variable untuk menampilkan tulisan judul buku.</li>
+</ul>
+<h2 id="dynamic-mockup">Dynamic Mockup</h2>
+<p>Jika sebelumnya kita Mockup dengan gambar dan text statis, kali ini kita akan mockup dengan text dan gambar dinamis dengan menggunakan variable dilanjutkan dengan provider.</p>
+<h3 id="variable-mockup">Variable mockup</h3>
+<p>Kita awali dengan mencoba menghardcode satu baris <code>BookListItem</code></p>
+<p>Buka file <code>lib/widgets/home/book-list.dart</code>, Ubah sesuai baris yang ter-<em>highlight</em> berikut:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="p">...</span>
+<span class="kd">class</span> <span class="nc">_BookListState</span> <span class="kd">extends</span> <span class="n">State</span><span class="o">&lt;</span><span class="n">BookList</span><span class="o">&gt;</span> <span class="p">{</span>
+  <span class="nd">@override</span>
+  <span class="n">Widget</span> <span class="n">build</span><span class="p">(</span><span class="n">BuildContext</span> <span class="n">context</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">GridView</span><span class="p">.</span><span class="n">builder</span><span class="p">(</span>
+      <span class="nl">padding:</span> <span class="n">EdgeInsets</span><span class="p">.</span><span class="n">all</span><span class="p">(</span><span class="m">10</span><span class="p">),</span>
+      <span class="nl">itemCount:</span> <span class="m">1</span><span class="p">,</span>
+<span class="hll">      <span class="nl">itemBuilder:</span> <span class="p">(</span><span class="n">ctx</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="n">BookListItem</span><span class="p">(</span>
+</span><span class="hll">        <span class="nl">id:</span> <span class="s2">&quot;-&quot;</span><span class="p">,</span>
+</span><span class="hll">        <span class="nl">apiHost:</span> <span class="s2">&quot;https://perpus-api.biqdev.com&quot;</span><span class="p">,</span>
+</span><span class="hll">        <span class="nl">imagePath:</span> <span class="s2">&quot;assets/book.png&quot;</span><span class="p">,</span>
+</span><span class="hll">        <span class="nl">title:</span> <span class="s2">&quot;Judul buku mockup&quot;</span><span class="p">,</span>
+</span><span class="hll">      <span class="p">),</span>
+</span>      <span class="nl">gridDelegate:</span> <span class="n">SliverGridDelegateWithFixedCrossAxisCount</span><span class="p">(</span>
+        <span class="nl">crossAxisCount:</span> <span class="m">2</span><span class="p">,</span>
+        <span class="nl">childAspectRatio:</span> <span class="m">8</span> <span class="o">/</span> <span class="m">7</span><span class="p">,</span>
+        <span class="nl">crossAxisSpacing:</span> <span class="m">10</span><span class="p">,</span>
+        <span class="nl">mainAxisSpacing:</span> <span class="m">10</span><span class="p">,</span>
+      <span class="p">),</span>
+<span class="p">...</span>
+</code></pre></div>
+</td></tr></table>
+<p>Simpan dan jalankan aplikasi kita. Seharusnya tampilannya menjadi seperti ini:</p>
+<p><img alt="variable mockup" src="../../assets/images/crud/crud-1.4.png" style="width: 250px; height: auto;" /></p>
+<p>Saat ini <code>BookListItem</code> sudah menggunakan variable untuk menampilkan data.</p>
+<h3 id="provider-mockup">Provider mockup</h3>
+<p>Setelah itu, kita mockup dengan data dari <strong>provider</strong>. Hal ini bertujuan untuk mensimulasikan data yang akan kita terima dari REST API nantinya sudah berada disisi <strong>provider</strong>.</p>
+<ol>
+<li>
+<p>Kita awali dengan me-<em>load</em> provider kita. Masih pada file <code>lib/widgets/home/book-list.dart</code>, ubah sesuai dengan baris yang ter-<em>hightlight</em> berikut:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">import</span> <span class="s1">&#39;package:flutter/material.dart&#39;</span><span class="p">;</span>
+<span class="hll"><span class="k">import</span> <span class="s1">&#39;package:provider/provider.dart&#39;</span><span class="p">;</span>
+</span>
+<span class="k">import</span> <span class="s1">&#39;package:perpus/widgets/home/book-list-item.dart&#39;</span><span class="p">;</span>
+<span class="hll"><span class="k">import</span> <span class="s1">&#39;package:perpus/models/booklist_model.dart&#39;</span><span class="p">;</span>
+</span><span class="hll"><span class="k">import</span> <span class="s1">&#39;package:perpus/providers/booklist_provider.dart&#39;</span><span class="p">;</span>
+</span><span class="hll"><span class="k">import</span> <span class="s1">&#39;package:perpus/providers/setting_provider.dart&#39;</span><span class="p">;</span>
+</span>
+<span class="kd">class</span> <span class="nc">BookList</span> <span class="kd">extends</span> <span class="n">StatefulWidget</span> <span class="p">{</span>
+  <span class="nd">@override</span>
+  <span class="n">_BookListState</span> <span class="n">createState</span><span class="p">()</span> <span class="o">=&gt;</span> <span class="n">_BookListState</span><span class="p">();</span>
+<span class="p">}</span>
+
+<span class="kd">class</span> <span class="nc">_BookListState</span> <span class="kd">extends</span> <span class="n">State</span><span class="o">&lt;</span><span class="n">BookList</span><span class="o">&gt;</span> <span class="p">{</span>
+  <span class="nd">@override</span>
+  <span class="n">Widget</span> <span class="n">build</span><span class="p">(</span><span class="n">BuildContext</span> <span class="n">context</span><span class="p">)</span> <span class="p">{</span>
+<span class="hll">    <span class="kd">var</span> <span class="n">apiHost</span> <span class="o">=</span>
+</span><span class="hll">        <span class="n">Provider</span><span class="p">.</span><span class="n">of</span><span class="o">&lt;</span><span class="n">SettingProvider</span><span class="o">&gt;</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="nl">listen:</span> <span class="kc">false</span><span class="p">).</span><span class="n">setting</span><span class="p">.</span><span class="n">apiHost</span><span class="p">;</span>
+</span><span class="hll">    <span class="n">List</span><span class="o">&lt;</span><span class="n">BookListModel</span><span class="o">&gt;</span> <span class="n">bookList</span> <span class="o">=</span> <span class="n">context</span><span class="p">.</span><span class="n">watch</span><span class="o">&lt;</span><span class="n">BookListProvider</span><span class="o">&gt;</span><span class="p">().</span><span class="n">list</span><span class="p">;</span>
+</span>
+    <span class="k">return</span> <span class="n">GridView</span><span class="p">.</span><span class="n">builder</span><span class="p">(</span>
+<span class="p">...</span>
+</code></pre></div>
+</td></tr></table>
+<ol>
+<li>Line ke-2, load library provider untuk mendapatkan fungsionalitas provider secara otomatis pada <code>context</code></li>
+<li>Line ke-5 &amp; 6, import model dan provider Book list kita</li>
+<li>Line ke-7, kita hanya mengimport provider untuk Setting, karena tidak ada deklarasi model yang rumit. Cukup mengambil string saja.</li>
+<li>Line ke-17 &amp; 18, ambil variable setting <code>apiHost</code></li>
+<li>Line ke-18, kita mengambil data <strong>mockup</strong> book list dari provider kita</li>
+</ol>
+</li>
+<li>
+<p>Kita gunakan variabel <code>List&lt;BookListModel&gt; bookList</code> yang telah kita deklarasikan pada class <code>BookListItem</code> diatas. Masih pada file yang sama, ubah sesuai baris yang ter-<em>highlight</em> berikut:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    <span class="p">...</span>
+    <span class="k">return</span> <span class="n">GridView</span><span class="p">.</span><span class="n">builder</span><span class="p">(</span>
+      <span class="nl">padding:</span> <span class="n">EdgeInsets</span><span class="p">.</span><span class="n">all</span><span class="p">(</span><span class="m">10</span><span class="p">),</span>
+      <span class="nl">itemCount:</span> <span class="n">bookList</span><span class="p">.</span><span class="n">length</span><span class="p">,</span>
+      <span class="nl">itemBuilder:</span> <span class="p">(</span><span class="n">ctx</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="n">BookListItem</span><span class="p">(</span>
+<span class="hll">        <span class="nl">id:</span> <span class="n">bookList</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">id</span><span class="p">,</span>
+</span><span class="hll">        <span class="nl">apiHost:</span> <span class="n">apiHost</span><span class="p">,</span>
+</span><span class="hll">        <span class="nl">imagePath:</span> <span class="n">bookList</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">imagePath</span><span class="p">,</span>
+</span><span class="hll">        <span class="nl">title:</span> <span class="n">bookList</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">title</span><span class="p">,</span>
+</span>      <span class="p">),</span>
+      <span class="nl">gridDelegate:</span> <span class="n">SliverGridDelegateWithFixedCrossAxisCount</span><span class="p">(</span>
+        <span class="nl">crossAxisCount:</span> <span class="m">2</span><span class="p">,</span>
+        <span class="nl">childAspectRatio:</span> <span class="m">8</span> <span class="o">/</span> <span class="m">7</span><span class="p">,</span>
+        <span class="nl">crossAxisSpacing:</span> <span class="m">10</span><span class="p">,</span>
+        <span class="nl">mainAxisSpacing:</span> <span class="m">10</span><span class="p">,</span>
+      <span class="p">),</span>
+    <span class="p">);</span>
+  <span class="p">}</span>
+  <span class="p">...</span>
+</code></pre></div>
+</td></tr></table>
+<p>Pada code diatas, kita gunakan variable <code>bookList</code> yang kita ambil dari <strong>provider</strong>. Karena variable <code>bookList</code> adalah bertype <code>List</code>, sehingga bisa kita akses dengan menggunakan index yaitu <code>i</code> yang di dapat dari <code>GridView.builder()</code>. Pada class <code>GridView.builder()</code>, secara otomatis akan melakukan <em>loop</em> sesuai angka <code>int</code> yang kita masukkan pada bagian <code>itemCount: bookList.length,</code>. Sehingga <code>itemBuilder: (ctx, i)</code>, nilai <code>i</code> adalah index dari <em>loop</em> sejumlah angka dari <code>itemCount: bookList.length,</code>. Pada contoh <a href="../provider-setup/#booklistprovider">provider mockup</a>, kita memasukkan 3 data <code>List</code> bertipe <code>BookListModel</code>.</p>
+<p>Sehingga jika kita jalankan, hasilnya akan seperti ini:</p>
+<p><img alt="Provider mockup" src="../../assets/images/crud/crud-1.5.png" style="width:250px; height: auto;" /></p>
+</li>
+</ol>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
+        
+          <a href="../provider-setup/" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+            </div>
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Sebelumnya
+                </span>
+                Provider setup
+              </div>
+            </div>
+          </a>
+        
+        
+          <a href="../create/" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Selanjutnya
+                </span>
+                (C)reate
+              </div>
+            </div>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2020 www.biqdev.com;
+          </div>
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../assets/javascripts/vendor.fd16492e.min.js"></script>
+      <script src="../../assets/javascripts/bundle.7836ba4d.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Salin ke memori", "clipboard.copied": "Tersalin ke memori", "search.config.lang": "en", "search.config.pipeline": " ", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Cari", "search.result.placeholder": "Ketik untuk mulai pencarian", "search.result.none": "Tidak ada dokumen yang sesuai", "search.result.one": "1 dokumen ditemukan", "search.result.other": "# dokumen ditemukan", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}</script>
+      
+      <script>
+        app = initialize({
+          base: "../..",
+          features: [],
+          search: Object.assign({
+            worker: "../../assets/javascripts/worker/search.4ac00218.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+    
+  </body>
+</html>
