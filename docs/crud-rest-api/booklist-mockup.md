@@ -161,8 +161,32 @@ Setelah itu, kita mockup dengan data dari **provider**. Hal ini bertujuan untuk 
     1. Line ke-17 & 18, ambil variable setting `apiHost`
     1. Line ke-18, kita mengambil data **mockup** book list dari provider kita
 
-1. Kita gunakan variabel `List<BookListModel> bookList` yang telah kita deklarasikan pada class `BookListItem`. Masih pada file yang sama, ubah sesuai baris yang ter-*highlight* berikut:
+1. Kita gunakan variabel `List<BookListModel> bookList` yang telah kita deklarasikan pada class `BookListItem` diatas. Masih pada file yang sama, ubah sesuai baris yang ter-*highlight* berikut:
 
-```dart 
-
-```
+      ```dart linenums="20" hl_lines="6-9"
+          ...
+          return GridView.builder(
+            padding: EdgeInsets.all(10),
+            itemCount: bookList.length,
+            itemBuilder: (ctx, i) => BookListItem(
+              id: bookList[i].id,
+              apiHost: apiHost,
+              imagePath: bookList[i].imagePath,
+              title: bookList[i].title,
+            ),
+            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 2,
+              childAspectRatio: 8 / 7,
+              crossAxisSpacing: 10,
+              mainAxisSpacing: 10,
+            ),
+          );
+        }
+        ...
+      ```
+   
+      Pada code diatas, kita gunakan variable `bookList` yang kita ambil dari **provider**. Karena variable `bookList` adalah bertype `List`, sehingga bisa kita akses dengan menggunakan index yaitu `i` yang di dapat dari `GridView.builder()`. Pada class `GridView.builder()`, secara otomatis akan melakukan *loop* sesuai angka `int` yang kita masukkan pada bagian `itemCount: bookList.length,`. Sehingga `itemBuilder: (ctx, i)`, nilai `i` adalah index dari *loop* sejumlah angka dari `itemCount: bookList.length,`. Pada contoh [provider mockup](provider-setup.md#booklistprovider), kita memasukkan 3 data `List` bertipe `BookListModel`.
+   
+      Sehingga jika kita jalankan, hasilnya akan seperti ini:
+   
+      ![Provider mockup](../assets/images/crud/crud-1.5.png){: style="width:250px; height: auto;"}
