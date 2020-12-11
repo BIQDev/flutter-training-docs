@@ -90,17 +90,18 @@ Setelah cukup puas dengan "mockup" pada tampilan Grid Item kita, pindahkan `Grid
     
     ```
 
-1. Pada file `lib/widgets/home/book-list.dart` line 2, Tambahkan:
+1. Pada file `lib/widgets/home/book-list.dart` line 3, Tambahkan:
 
-    ```dart linenums="1" hl_lines="2"
+    ```dart linenums="1" hl_lines="3"
     import 'package:flutter/material.dart';
+
     import 'package:perpus/widgets/home/book-list-item.dart';
     
     class BookList extends StatefulWidget {
     ...
     ```
-   Kemudian line 15 menjadi
-   ```dart linenums="15"
+   Kemudian line 16 menjadi
+   ```dart linenums="16"
          itemBuilder: (ctx, i) => BookListItem(),
    ```
 
