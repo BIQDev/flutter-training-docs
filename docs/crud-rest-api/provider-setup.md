@@ -121,3 +121,122 @@ Sebelum kita membuat provider lain, marilah kita "jahit" dulu satu **provider** 
     Code diatas, pada dasarnya memindahkan `MaterialApp(...)` yang sebelumnya sebagi "root" menjadi "child".
 
  
+## Provider untuk Booklist
+
+Inilah provider utama kita. Yang akan kita gunakan untuk CRUD. Provider ini bersifat dinamis, artinya akan berubah-ubah sesuai data yang kita dapat dari server REST API ( Saat Create, Update dan Delete )
+
+### BookListModel
+
+Seperti yang telah dijelaskan dan kita buat, langkah pertama adalah membuat **model** dari provider kita. Buat file baru di `lib/models/booklist_model.dart`. Masukkan code berikut:
+
+```dart linenums="1"
+import 'dart:io';
+
+import 'package:flutter/foundation.dart';
+
+class BookListModel {
+  final String id; // id dari record didatabase
+  final String title; // Judul buku
+  final String imagePath; // URL gambar dari buku/sampul buku
+  final File imageFile; // Untuk handle file upload berupa object File
+
+  BookListModel({
+    @required this.id,
+    @required this.title,
+    @required this.imagePath,
+    this.imageFile,
+  });
+
+  /* fromJson() digunakan untuk konversi data JSON
+  * yang diterima dari REST API
+  * Menjadi Map<String, dynamic>
+  */
+  BookListModel.fromJson(Map<String, dynamic> json)
+      : id = json['id'],
+        title = json['title'],
+        imagePath = json['image_path'],
+        imageFile = json["image_file"];
+}
+```
+
+### BookListProvider
+
+Kemudian setelah model selesai, kita buat `class` untuk **provider** nya.
+
+```dart linenums="1"
+import 'package:flutter/material.dart';
+
+import 'package:perpus/models/booklist_model.dart';
+
+class BookListProvider with ChangeNotifier {
+  // _list ini adalah model utama dari daftar buku kita
+  // akan digunakan untuk menampilkan daftar buku
+  // yang didapat dari REST API
+  List<BookListModel> _list = [
+    // Kita buat dummy data atau data palsu
+    // hanya untuk tujuan mockup dulu
+    BookListModel(
+      id: "1",
+      title: "Judul 1",
+      imagePath: "assets/book.png",
+    ),
+    BookListModel(
+      id: "2",
+      title: "Judul 2",
+      imagePath: "assets/book.png",
+    ),
+    BookListModel(
+      id: "3",
+      title: "Judul 3",
+      imagePath: "assets/book.png",
+    ),
+  ];
+
+  List<BookListModel> get list {
+    return [...this._list];
+  }
+}
+```
+
+## "Jahit" `BookListProvider`
+
+Seperti yang kita lakukan pada `SettingProvider`, kita harus "menjahit" provider baru kita yaitu `BookListProvider`.
+
+Buka file `lib/main.dart`, ubah sesuai baris yang ter-*highlight* berikut:
+
+```dart linenums="1" hl_lines="2 20"
+import 'package:flutter/material.dart';
+import 'package:perpus/providers/booklist_provider.dart';
+import 'package:provider/provider.dart';
+
+import 'package:perpus/screens/book-input.dart';
+import 'package:perpus/screens/home-page.dart';
+import 'package:perpus/providers/setting_provider.dart';
+
+void main() {
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  // This widget is the root of your application.
+  @override
+  Widget build(BuildContext context) {
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => SettingProvider()),
+        ChangeNotifierProvider(create: (_) => BookListProvider()),
+      ],
+      child: MaterialApp(
+        title: 'Perpus',
+        theme: ThemeData(
+          primarySwatch: Colors.blue,
+        ),
+        home: MyHomePage(),
+        routes: {
+          BookInputScreen.routeName: (ctx) => BookInputScreen(),
+        },
+      ),
+    );
+  }
+}
+```
