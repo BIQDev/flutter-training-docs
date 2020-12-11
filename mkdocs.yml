@@ -1,6 +1,6 @@
 site_name: Flutter training
 site_author: bayu@biqdev.com
-site_url: https://biqdev.com/tutorial/flutter-training
+site_url: https://biqdev.com/tutorial/flutter
 dev_addr: 0.0.0.0:8080
 
 # https://squidfunk.github.io/mkdocs-material/

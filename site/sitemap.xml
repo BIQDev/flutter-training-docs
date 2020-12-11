@@ -1,30 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><url>
-     <loc>https://biqdev.com/tutorial/flutter-training/</loc>
+     <loc>https://biqdev.com/tutorial/flutter/</loc>
      <lastmod>2020-12-11</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
-     <loc>https://biqdev.com/tutorial/flutter-training/crud-rest-api/overview/</loc>
+     <loc>https://biqdev.com/tutorial/flutter/crud-rest-api/overview/</loc>
      <lastmod>2020-12-11</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
-     <loc>https://biqdev.com/tutorial/flutter-training/crud-rest-api/grid-setup/</loc>
+     <loc>https://biqdev.com/tutorial/flutter/crud-rest-api/grid-setup/</loc>
      <lastmod>2020-12-11</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
-     <loc>https://biqdev.com/tutorial/flutter-training/crud-rest-api/provider/</loc>
+     <loc>https://biqdev.com/tutorial/flutter/crud-rest-api/provider/</loc>
      <lastmod>2020-12-11</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
-     <loc>https://biqdev.com/tutorial/flutter-training/crud-rest-api/provider-setup/</loc>
+     <loc>https://biqdev.com/tutorial/flutter/crud-rest-api/provider-setup/</loc>
      <lastmod>2020-12-11</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
-     <loc>https://biqdev.com/tutorial/flutter-training/crud-rest-api/booklist-mockup/</loc>
+     <loc>https://biqdev.com/tutorial/flutter/crud-rest-api/booklist-mockup/</loc>
      <lastmod>2020-12-11</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
-     <loc>https://biqdev.com/tutorial/flutter-training/crud-rest-api/create/</loc>
+     <loc>https://biqdev.com/tutorial/flutter/crud-rest-api/create/</loc>
      <lastmod>2020-12-11</lastmod>
      <changefreq>daily</changefreq>
     </url>
