@@ -322,6 +322,18 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../read/" class="md-nav__link">
+      (R)ead
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -461,7 +473,33 @@
 64
 65
 66
-67</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">import</span> <span class="s1">&#39;package:flutter/material.dart&#39;</span><span class="p">;</span>
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">import</span> <span class="s1">&#39;package:flutter/material.dart&#39;</span><span class="p">;</span>
 <span class="hll"><span class="k">import</span> <span class="s1">&#39;dart:convert&#39;</span><span class="p">;</span>
 </span><span class="hll"><span class="k">import</span> <span class="s1">&#39;package:path/path.dart&#39;</span> <span class="k">as</span> <span class="n">path</span><span class="p">;</span>
 </span><span class="hll"><span class="k">import</span> <span class="s1">&#39;package:http_parser/http_parser.dart&#39;</span><span class="p">;</span>
@@ -473,8 +511,34 @@
 <span class="hll"><span class="k">import</span> <span class="s1">&#39;package:perpus/providers/setting_provider.dart&#39;</span><span class="p">;</span>
 </span>
 <span class="kd">class</span> <span class="nc">BookListProvider</span> <span class="kd">with</span> <span class="n">ChangeNotifier</span> <span class="p">{</span>
-<span class="hll">  <span class="kt">bool</span> <span class="n">_isCreating</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
-</span><span class="hll">
+  <span class="c1">// _list ini adalah model utama dari daftar buku kita</span>
+  <span class="c1">// akan digunakan untuk menampilkan daftar buku</span>
+  <span class="c1">// yang didapat dari REST API</span>
+  <span class="n">List</span><span class="o">&lt;</span><span class="n">BookListModel</span><span class="o">&gt;</span> <span class="n">_list</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="c1">// Kita buat dummy data atau data palsu</span>
+    <span class="c1">// hanya untuk tujuan mockup dulu</span>
+    <span class="n">BookListModel</span><span class="p">(</span>
+      <span class="nl">id:</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span>
+      <span class="nl">title:</span> <span class="s2">&quot;Judul 1&quot;</span><span class="p">,</span>
+      <span class="nl">imagePath:</span> <span class="s2">&quot;assets/book.png&quot;</span><span class="p">,</span>
+    <span class="p">),</span>
+    <span class="n">BookListModel</span><span class="p">(</span>
+      <span class="nl">id:</span> <span class="s2">&quot;2&quot;</span><span class="p">,</span>
+      <span class="nl">title:</span> <span class="s2">&quot;Judul 2&quot;</span><span class="p">,</span>
+      <span class="nl">imagePath:</span> <span class="s2">&quot;assets/book.png&quot;</span><span class="p">,</span>
+    <span class="p">),</span>
+    <span class="n">BookListModel</span><span class="p">(</span>
+      <span class="nl">id:</span> <span class="s2">&quot;3&quot;</span><span class="p">,</span>
+      <span class="nl">title:</span> <span class="s2">&quot;Judul 3&quot;</span><span class="p">,</span>
+      <span class="nl">imagePath:</span> <span class="s2">&quot;assets/book.png&quot;</span><span class="p">,</span>
+    <span class="p">),</span>
+  <span class="p">];</span>
+
+  <span class="n">List</span><span class="o">&lt;</span><span class="n">BookListModel</span><span class="o">&gt;</span> <span class="kd">get</span> <span class="n">list</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">[...</span><span class="k">this</span><span class="p">.</span><span class="n">_list</span><span class="p">];</span>
+  <span class="p">}</span>
+<span class="hll">
+</span><span class="hll">  <span class="kt">bool</span> <span class="n">_isCreating</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
 </span><span class="hll">  <span class="kt">bool</span> <span class="kd">get</span> <span class="n">isCreating</span> <span class="p">{</span>
 </span><span class="hll">    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="n">_isCreating</span><span class="p">;</span>
 </span><span class="hll">  <span class="p">}</span>
@@ -484,6 +548,7 @@
 </span><span class="hll">    <span class="k">this</span><span class="p">.</span><span class="n">_isCreating</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
 </span><span class="hll">    <span class="n">notifyListeners</span><span class="p">();</span>
 </span><span class="hll">    <span class="kd">final</span> <span class="n">settingData</span> <span class="o">=</span> <span class="n">Provider</span><span class="p">.</span><span class="n">of</span><span class="o">&lt;</span><span class="n">SettingProvider</span><span class="o">&gt;</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="nl">listen:</span> <span class="kc">false</span><span class="p">);</span>
+</span><span class="hll">    <span class="c1">// Validasi data jika mungkin kosong atau null</span>
 </span><span class="hll">    <span class="k">if</span> <span class="p">(</span><span class="n">data</span> <span class="o">==</span> <span class="kc">null</span> <span class="o">||</span> <span class="n">data</span><span class="p">.</span><span class="n">title</span> <span class="o">==</span> <span class="s2">&quot;&quot;</span><span class="p">)</span> <span class="p">{</span>
 </span><span class="hll">      <span class="n">Map</span><span class="o">&lt;</span><span class="kt">String</span><span class="p">,</span> <span class="kt">dynamic</span><span class="o">&gt;</span> <span class="n">resInvalid</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Map</span><span class="o">&lt;</span><span class="kt">String</span><span class="p">,</span> <span class="kt">dynamic</span><span class="o">&gt;</span><span class="p">();</span>
 </span><span class="hll">      <span class="n">resInvalid</span><span class="p">[</span><span class="s2">&quot;statusCode&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="m">400</span><span class="p">;</span>
@@ -493,11 +558,13 @@
 </span><span class="hll">      <span class="k">return</span> <span class="n">resInvalid</span><span class="p">;</span>
 </span><span class="hll">    <span class="p">}</span>
 </span><span class="hll">
+</span><span class="hll">    <span class="c1">// Membaca data gambar/image untuk diupload</span>
 </span><span class="hll">    <span class="n">List</span> <span class="n">mimeStr</span> <span class="o">=</span> <span class="n">lookupMimeType</span><span class="p">(</span><span class="n">data</span><span class="p">.</span><span class="n">imageFile</span><span class="p">.</span><span class="n">path</span><span class="p">).</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">);</span>
-</span><span class="hll">
 </span><span class="hll">    <span class="kd">var</span> <span class="n">imageBytes</span> <span class="o">=</span> <span class="kd">await</span> <span class="n">data</span><span class="p">.</span><span class="n">imageFile</span><span class="p">.</span><span class="n">readAsBytes</span><span class="p">();</span>
+</span><span class="hll">
 </span><span class="hll">    <span class="kd">var</span> <span class="n">uri</span> <span class="o">=</span> <span class="n">Uri</span><span class="p">.</span><span class="n">parse</span><span class="p">(</span>
 </span><span class="hll">        <span class="s1">&#39;</span><span class="si">${</span><span class="n">settingData</span><span class="p">.</span><span class="n">setting</span><span class="p">.</span><span class="n">apiHost</span><span class="si">}</span><span class="s1">/perpus-api/booklist/</span><span class="si">${</span><span class="n">settingData</span><span class="p">.</span><span class="n">setting</span><span class="p">.</span><span class="n">userName</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">);</span>
+</span><span class="hll">    <span class="c1">// Request HTTP dengan POST verb</span>
 </span><span class="hll">    <span class="kd">var</span> <span class="n">request</span> <span class="o">=</span> <span class="n">http</span><span class="p">.</span><span class="n">MultipartRequest</span><span class="p">(</span><span class="s1">&#39;POST&#39;</span><span class="p">,</span> <span class="n">uri</span><span class="p">)</span>
 </span><span class="hll">      <span class="p">..</span><span class="n">fields</span><span class="p">[</span><span class="s1">&#39;title&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="p">.</span><span class="n">title</span>
 </span><span class="hll">      <span class="p">..</span><span class="n">files</span><span class="p">.</span><span class="n">add</span><span class="p">(</span><span class="n">http</span><span class="p">.</span><span class="n">MultipartFile</span><span class="p">.</span><span class="n">fromBytes</span><span class="p">(</span><span class="s1">&#39;image&#39;</span><span class="p">,</span> <span class="n">imageBytes</span><span class="p">,</span>
@@ -505,31 +572,29 @@
 </span><span class="hll">          <span class="nl">contentType:</span> <span class="n">MediaType</span><span class="p">(</span><span class="n">mimeStr</span><span class="p">[</span><span class="m">0</span><span class="p">],</span> <span class="n">mimeStr</span><span class="p">[</span><span class="m">1</span><span class="p">])));</span>
 </span><span class="hll">    <span class="kt">int</span> <span class="n">statusCode</span><span class="p">;</span>
 </span><span class="hll">    <span class="k">try</span> <span class="p">{</span>
+</span><span class="hll">      <span class="c1">// Gunakan blok &quot;try&quot; karena ada kemungkinan error yang tidak kita ketahui saat ini dari fungsu json.decode()</span>
 </span><span class="hll">      <span class="n">http</span><span class="p">.</span><span class="n">StreamedResponse</span> <span class="n">res</span> <span class="o">=</span> <span class="kd">await</span> <span class="n">request</span><span class="p">.</span><span class="n">send</span><span class="p">();</span>
 </span><span class="hll">      <span class="n">statusCode</span> <span class="o">=</span> <span class="n">res</span><span class="p">.</span><span class="n">statusCode</span><span class="p">;</span>
 </span><span class="hll">      <span class="kd">final</span> <span class="kt">String</span> <span class="n">respStr</span> <span class="o">=</span> <span class="kd">await</span> <span class="n">res</span><span class="p">.</span><span class="n">stream</span><span class="p">.</span><span class="n">bytesToString</span><span class="p">();</span>
-</span><span class="hll">      <span class="n">Map</span><span class="o">&lt;</span><span class="kt">String</span><span class="p">,</span> <span class="kt">dynamic</span><span class="o">&gt;</span> <span class="n">resDecoded</span> <span class="o">=</span> <span class="n">json</span><span class="p">.</span><span class="n">decode</span><span class="p">(</span><span class="n">respStr</span><span class="p">);</span>
+</span><span class="hll">      <span class="n">Map</span><span class="o">&lt;</span><span class="kt">String</span><span class="p">,</span> <span class="kt">dynamic</span><span class="o">&gt;</span> <span class="n">resDecoded</span> <span class="o">=</span> <span class="n">json</span><span class="p">.</span><span class="n">decode</span><span class="p">(</span><span class="n">respStr</span><span class="p">);</span> <span class="c1">// Decode JSON</span>
 </span><span class="hll">      <span class="n">resDecoded</span><span class="p">[</span><span class="s2">&quot;statusCode&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">res</span><span class="p">.</span><span class="n">statusCode</span><span class="p">;</span>
 </span><span class="hll">      <span class="k">this</span><span class="p">.</span><span class="n">_isCreating</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
-</span><span class="hll">      <span class="n">notifyListeners</span><span class="p">();</span>
+</span><span class="hll">      <span class="n">notifyListeners</span><span class="p">();</span> <span class="c1">//Prosedur standard untuk memberitahu &quot;listener&quot; bahwa ada perubahan</span>
 </span><span class="hll">      <span class="k">return</span> <span class="n">resDecoded</span><span class="p">;</span>
 </span><span class="hll">    <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="n">e</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="hll">      <span class="c1">// Jika terjadi error</span>
 </span><span class="hll">      <span class="n">Map</span><span class="o">&lt;</span><span class="kt">String</span><span class="p">,</span> <span class="kt">dynamic</span><span class="o">&gt;</span> <span class="n">resInvalid</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Map</span><span class="o">&lt;</span><span class="kt">String</span><span class="p">,</span> <span class="kt">dynamic</span><span class="o">&gt;</span><span class="p">();</span>
 </span><span class="hll">      <span class="n">resInvalid</span><span class="p">[</span><span class="s2">&quot;statusCode&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">statusCode</span> <span class="o">!=</span> <span class="kc">null</span> <span class="o">?</span> <span class="n">statusCode</span> <span class="o">:</span> <span class="m">400</span><span class="p">;</span>
 </span><span class="hll">      <span class="n">resInvalid</span><span class="p">[</span><span class="s2">&quot;message&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">e</span><span class="p">.</span><span class="n">toString</span><span class="p">();</span>
 </span><span class="hll">      <span class="k">this</span><span class="p">.</span><span class="n">_isCreating</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
-</span><span class="hll">      <span class="n">notifyListeners</span><span class="p">();</span>
+</span><span class="hll">      <span class="n">notifyListeners</span><span class="p">();</span> <span class="c1">//Prosedur standard untuk memberitahu &quot;listener&quot; bahwa ada perubahan</span>
 </span><span class="hll">      <span class="k">return</span> <span class="n">resInvalid</span><span class="p">;</span>
 </span><span class="hll">    <span class="p">}</span>
 </span><span class="hll">  <span class="p">}</span>
-</span><span class="hll">
-</span>  <span class="c1">// _list ini adalah model utama dari daftar buku kita</span>
-  <span class="c1">// akan digunakan untuk menampilkan daftar buku</span>
-  <span class="c1">// yang didapat dari REST API</span>
-  <span class="n">List</span><span class="o">&lt;</span><span class="n">BookListModel</span><span class="o">&gt;</span> <span class="n">_list</span> <span class="o">=</span> <span class="p">[</span>
-<span class="p">...</span>
+</span><span class="p">}</span>
 </code></pre></div>
 </td></tr></table>
+<p>Pada code diatas, kita menggunakan <strong>POST</strong> sebagai HTTP verb, hal ini sesuai dengan standard: <a href="https://tools.ietf.org/html/rfc2616#section-9.5">https://tools.ietf.org/html/rfc2616#section-9.5</a></p>
 <h2 id="ui-user-interface"><em>UI</em> ( User interface )</h2>
 <p>UI untuk (C)reate adalah sebuah <strong>screen</strong> terpisah, yang bisa dibuka dari halaman "home". Berikut ini flow UI nya:</p>
 <p><img alt="Create UI Flow" src="../../assets/images/crud/crud-1.6.png" /></p>
@@ -919,7 +984,7 @@
     ]
 }
 </code></pre></div>
-<p>Selamat <img alt="🎉" class="twemoji" src="https://twemoji.maxcdn.com/v/latest/svg/1f389.svg" title=":tada:" />, anda berhasil.</p>
+<p>Berarti, selamat <img alt="🎉" class="twemoji" src="https://twemoji.maxcdn.com/v/latest/svg/1f389.svg" title=":tada:" />, anda berhasil.</p>
                 
               
               
@@ -952,6 +1017,20 @@
             </div>
           </a>
         
+        
+          <a href="../read/" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Selanjutnya
+                </span>
+                (R)ead
+              </div>
+            </div>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+            </div>
+          </a>
         
       </nav>
     </div>

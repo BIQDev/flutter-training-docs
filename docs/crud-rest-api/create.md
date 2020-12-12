@@ -6,7 +6,7 @@ Meskipun tidak harus selalu memulai dengan (C)reate sesuai urutan dari singkatan
 
 Untuk fungsi CRUD, termasuk (C)reate, akan bertempat di **provider**. Untuk itu, mari kita buka file `lib/providers/booklist_provider.dart`. Ubah/tambah sesuai dengan baris yang ter-*highlight* berikut:
 
-```dart linenums="1" hl_lines="2-7 10 13-62"
+```dart linenums="1" hl_lines="2-7 10 39-92"
 import 'package:flutter/material.dart';
 import 'dart:convert';
 import 'package:path/path.dart' as path;
@@ -19,8 +19,34 @@ import 'package:perpus/models/booklist_model.dart';
 import 'package:perpus/providers/setting_provider.dart';
 
 class BookListProvider with ChangeNotifier {
-  bool _isCreating = false;
+  // _list ini adalah model utama dari daftar buku kita
+  // akan digunakan untuk menampilkan daftar buku
+  // yang didapat dari REST API
+  List<BookListModel> _list = [
+    // Kita buat dummy data atau data palsu
+    // hanya untuk tujuan mockup dulu
+    BookListModel(
+      id: "1",
+      title: "Judul 1",
+      imagePath: "assets/book.png",
+    ),
+    BookListModel(
+      id: "2",
+      title: "Judul 2",
+      imagePath: "assets/book.png",
+    ),
+    BookListModel(
+      id: "3",
+      title: "Judul 3",
+      imagePath: "assets/book.png",
+    ),
+  ];
 
+  List<BookListModel> get list {
+    return [...this._list];
+  }
+
+  bool _isCreating = false;
   bool get isCreating {
     return this._isCreating;
   }
@@ -30,6 +56,7 @@ class BookListProvider with ChangeNotifier {
     this._isCreating = true;
     notifyListeners();
     final settingData = Provider.of<SettingProvider>(context, listen: false);
+    // Validasi data jika mungkin kosong atau null
     if (data == null || data.title == "") {
       Map<String, dynamic> resInvalid = new Map<String, dynamic>();
       resInvalid["statusCode"] = 400;
@@ -39,11 +66,13 @@ class BookListProvider with ChangeNotifier {
       return resInvalid;
     }
 
+    // Membaca data gambar/image untuk diupload
     List mimeStr = lookupMimeType(data.imageFile.path).split("/");
-
     var imageBytes = await data.imageFile.readAsBytes();
+
     var uri = Uri.parse(
         '${settingData.setting.apiHost}/perpus-api/booklist/${settingData.setting.userName}');
+    // Request HTTP dengan POST verb
     var request = http.MultipartRequest('POST', uri)
       ..fields['title'] = data.title
       ..files.add(http.MultipartFile.fromBytes('image', imageBytes,
@@ -51,30 +80,29 @@ class BookListProvider with ChangeNotifier {
           contentType: MediaType(mimeStr[0], mimeStr[1])));
     int statusCode;
     try {
+      // Gunakan blok "try" karena ada kemungkinan error yang tidak kita ketahui saat ini dari fungsu json.decode()
       http.StreamedResponse res = await request.send();
       statusCode = res.statusCode;
       final String respStr = await res.stream.bytesToString();
-      Map<String, dynamic> resDecoded = json.decode(respStr);
+      Map<String, dynamic> resDecoded = json.decode(respStr); // Decode JSON
       resDecoded["statusCode"] = res.statusCode;
       this._isCreating = false;
-      notifyListeners();
+      notifyListeners(); //Prosedur standard untuk memberitahu "listener" bahwa ada perubahan
       return resDecoded;
     } catch (e) {
+      // Jika terjadi error
       Map<String, dynamic> resInvalid = new Map<String, dynamic>();
       resInvalid["statusCode"] = statusCode != null ? statusCode : 400;
       resInvalid["message"] = e.toString();
       this._isCreating = false;
-      notifyListeners();
+      notifyListeners(); //Prosedur standard untuk memberitahu "listener" bahwa ada perubahan
       return resInvalid;
     }
   }
-
-  // _list ini adalah model utama dari daftar buku kita
-  // akan digunakan untuk menampilkan daftar buku
-  // yang didapat dari REST API
-  List<BookListModel> _list = [
-...
+}
 ```
+
+Pada code diatas, kita menggunakan **POST** sebagai HTTP verb, hal ini sesuai dengan standard: [https://tools.ietf.org/html/rfc2616#section-9.5](https://tools.ietf.org/html/rfc2616#section-9.5)
 
 ## *UI* ( User interface )
 
@@ -302,4 +330,4 @@ Jika anda melihat tampilan kurang lebih seperti ini:
 }
 ```
 
-Selamat :tada:, anda berhasil.
+Berarti, selamat :tada:, anda berhasil.
