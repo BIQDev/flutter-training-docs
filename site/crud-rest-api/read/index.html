@@ -322,8 +322,8 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#panggil-render-dari-booklistprovider" class="md-nav__link">
-    Panggil render() dari BookListProvider
+  <a href="#panggil-read-dari-booklistprovider" class="md-nav__link">
+    Panggil read() dari BookListProvider
   </a>
   
 </li>
@@ -398,8 +398,8 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#panggil-render-dari-booklistprovider" class="md-nav__link">
-    Panggil render() dari BookListProvider
+  <a href="#panggil-read-dari-booklistprovider" class="md-nav__link">
+    Panggil read() dari BookListProvider
   </a>
   
 </li>
@@ -614,7 +614,7 @@
 </td></tr></table>
 <h2 id="jahit-api-request-ke-grid">"Jahit" API Request ke Grid</h2>
 <p>Saat nya "menjahit" API Request kit Grid view yang telah kita buat. Jika sebelumnya kita menggunakan data "mockup", kali ini kita akan benar-benar mengambil dari REST API Server.</p>
-<h3 id="panggil-render-dari-booklistprovider">Panggil <code>render()</code> dari <code>BookListProvider</code></h3>
+<h3 id="panggil-read-dari-booklistprovider">Panggil <code>read()</code> dari <code>BookListProvider</code></h3>
 <p>Buka file <code>lib/widgets/home/book-list.dart</code>. Pada file ini, kita hanya akan memicu fungsi <code>read()</code> yang telah kita buat pada <code>BookListProvider</code> yang baru saja kita tambahkan. Dengan memanggil fungsi <code>read()</code> tersebut, aplikasi kita akan mem-<em>fetch</em> data dari REST API. Sehingga setelah proses selesai, component "Grid view" kita akan tahu ada perubahan data dan me-<em>render</em> nya.</p>
 <p>Perhatikan dan ubah/tambah sesuai code yang ter-<em>highlight</em> berikut:</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>13

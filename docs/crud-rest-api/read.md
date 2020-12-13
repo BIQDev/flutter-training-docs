@@ -113,7 +113,7 @@ Untuk itu, buka kembali file `lib/providers/booklist_provider.dart`, kemudian pe
 
 Saat nya "menjahit" API Request kit Grid view yang telah kita buat. Jika sebelumnya kita menggunakan data "mockup", kali ini kita akan benar-benar mengambil dari REST API Server.
 
-### Panggil `render()` dari `BookListProvider`
+### Panggil `read()` dari `BookListProvider`
 Buka file `lib/widgets/home/book-list.dart`. Pada file ini, kita hanya akan memicu fungsi `read()` yang telah kita buat pada `BookListProvider` yang baru saja kita tambahkan. Dengan memanggil fungsi `read()` tersebut, aplikasi kita akan mem-*fetch* data dari REST API. Sehingga setelah proses selesai, component "Grid view" kita akan tahu ada perubahan data dan me-*render* nya.
 
 Perhatikan dan ubah/tambah sesuai code yang ter-*highlight* berikut:
