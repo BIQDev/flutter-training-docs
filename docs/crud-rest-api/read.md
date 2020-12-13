@@ -142,6 +142,8 @@ class _BookListState extends State<BookList> {
 ...
 ```
 
+Sebagai catatan, kita perlu melakukan pemanggilan `super.didChangeDependencies();` pada akhir prosedur, karena kita telah meng **override** fungsi `didChangeDependencies()`. Yang mana fungsi tersebut adalah bagian dari `Widget` *lifecycle*. Oleh karena itu agar fungsi-fungsi standard tetap dijalankan setelah fungsi kita, kita harus memanggil `super.didChangeDependencies();` agar *lifecycle* tersebut tetap berjalan seperti saat belum kita **override**
+
 Jalankan ulang aplikasi, tunggu beberapa saat. Jika semua sudah benar, seharusnya saat ini kita akan melihat aplikasi android kita sudah menggunakan data dari server yang sudah kita input sebelumnya.
 
 ### Tampilkan "loading indicator"
