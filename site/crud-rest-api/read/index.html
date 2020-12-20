@@ -347,6 +347,18 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../create-then-read/" class="md-nav__link">
+      (C)eate kemudian (R)ead
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -660,6 +672,7 @@
 <span class="p">...</span>
 </code></pre></div>
 </td></tr></table>
+<p>Sebagai catatan, kita perlu melakukan pemanggilan <code>super.didChangeDependencies();</code> pada akhir prosedur, karena kita telah meng <strong>override</strong> fungsi <code>didChangeDependencies()</code>. Yang mana fungsi tersebut adalah bagian dari <code>Widget</code> <em>lifecycle</em>. Oleh karena itu agar fungsi-fungsi standard tetap dijalankan setelah fungsi kita, kita harus memanggil <code>super.didChangeDependencies();</code> agar <em>lifecycle</em> tersebut tetap berjalan seperti saat belum kita <strong>override</strong></p>
 <p>Jalankan ulang aplikasi, tunggu beberapa saat. Jika semua sudah benar, seharusnya saat ini kita akan melihat aplikasi android kita sudah menggunakan data dari server yang sudah kita input sebelumnya.</p>
 <h3 id="tampilkan-loading-indicator">Tampilkan "loading indicator"</h3>
 <p>Mengunggu tanpa kepastian akan membuat tidak nyaman, bahkan bisa membuat hayati lelah <img alt="😄" class="twemoji" src="https://twemoji.maxcdn.com/v/latest/svg/1f604.svg" title=":smile:" />. Karena itu mari mari kita atur <em>UX</em> agar membuat user merasa nyaman dengan <em>behavior</em> dari aplikasi kita. <em>UX</em> adalah singkatan dari <em>User experience</em>, yang berkaitan erat dengan <em>UI</em> ( <em>User interface</em> ) pada bidang frontend development.</p>
@@ -763,6 +776,20 @@
             </div>
           </a>
         
+        
+          <a href="../create-then-read/" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Selanjutnya
+                </span>
+                (C)eate kemudian (R)ead
+              </div>
+            </div>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+            </div>
+          </a>
         
       </nav>
     </div>
