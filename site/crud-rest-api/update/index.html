@@ -330,6 +330,26 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#uiux-screen-update" class="md-nav__link">
+    UI/UX screen update
+  </a>
+  
+    <nav class="md-nav" aria-label="UI/UX screen update">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-current-value-nilai-data-saat-ini" class="md-nav__link">
+    1. Current value / nilai data saat ini
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -369,6 +389,26 @@
   <a href="#ui-button-onpressed" class="md-nav__link">
     UI button onPressed
   </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uiux-screen-update" class="md-nav__link">
+    UI/UX screen update
+  </a>
+  
+    <nav class="md-nav" aria-label="UI/UX screen update">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-current-value-nilai-data-saat-ini" class="md-nav__link">
+    1. Current value / nilai data saat ini
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -525,6 +565,147 @@
 </code></pre></div>
 </td></tr></table>
 <p>Sekarang, coba simpan dan jalankan aplikasi android kita, kemudian click/tap icon "edit" pada salah satu buku. Seharusnya "screen" dari input kita akan memiliki title "Edit Buku" pada bagian kiri atas. Bukan "Tambah buku" seperti pada prosedur (C)reate.</p>
+<h2 id="uiux-screen-update">UI/UX screen update</h2>
+<p>Kita akan menerapkan beberapa <em>rules</em> atau aturan untuk membuat UI/UX kita terasa nyaman pada halaman UI (U)pdate sebagai berikut:</p>
+<ol>
+<li><em>Current value</em>, atau nilai data saat ini yang sedang diedit, yang akan kita tampilkan pada halaman UI (U)pdate adalah judul buku atau <em>title</em>. </li>
+<li>Halaman input tidak akan menampilkan gambar saat ini</li>
+<li>Jika user ingin mengganti gambar, dan memilih gambar, maka gambar baru akan ditampilkan pada form input</li>
+</ol>
+<h3 id="1-current-value-nilai-data-saat-ini">1. Current value / nilai data saat ini</h3>
+<p>Pertama kita akan mengeset input kita dengan data yang sedang diedit. Untuk itu kita perlu mengeset field "title" pada input form kita. Akan tetapi, kita tidak akan melakukan set data dari <em>lifecycle</em> <code>build()</code> yang biasa kita buat dengan code <code>Widget build(BuildContext context)</code>. Karena mengeset data dari <em>lifecycle</em> <code>build()</code>, bisa berdampak pada <em>recursive</em> calls, atau pemanggilan fungsi yang berulang tanpa akhir.</p>
+<p>Oleh karena itu kita akan menggunakan <em>lifecycle</em> <code>didChangeDependencies()</code>, yang mana akan dipanggil sebelum terjadinya <em>lifecycle</em> <code>build</code>. Untuk itu, buka file <code>lib/screens/book-input.dart</code> kemudian ubah/tambah sesuai baris yang ter-<em>highlight</em> berikut:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">import</span> <span class="s1">&#39;package:flutter/material.dart&#39;</span><span class="p">;</span>
+<span class="k">import</span> <span class="s1">&#39;dart:io&#39;</span><span class="p">;</span>
+<span class="k">import</span> <span class="s1">&#39;package:image_picker/image_picker.dart&#39;</span><span class="p">;</span>
+<span class="k">import</span> <span class="s1">&#39;package:provider/provider.dart&#39;</span><span class="p">;</span>
+
+<span class="k">import</span> <span class="s1">&#39;package:perpus/models/booklist_model.dart&#39;</span><span class="p">;</span>
+<span class="k">import</span> <span class="s1">&#39;package:perpus/providers/booklist_provider.dart&#39;</span><span class="p">;</span>
+
+<span class="kd">class</span> <span class="nc">BookInputScreenArguments</span> <span class="p">{</span>
+  <span class="kd">final</span> <span class="kt">String</span> <span class="n">id</span><span class="p">;</span>
+  <span class="kd">final</span> <span class="kt">String</span> <span class="n">title</span><span class="p">;</span>
+  <span class="kd">final</span> <span class="kt">String</span> <span class="n">imagePath</span><span class="p">;</span>
+  <span class="n">BookInputScreenArguments</span><span class="p">({</span><span class="k">this</span><span class="p">.</span><span class="n">id</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="n">title</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="n">imagePath</span><span class="p">});</span>
+<span class="p">}</span>
+
+<span class="kd">class</span> <span class="nc">BookInputScreen</span> <span class="kd">extends</span> <span class="n">StatefulWidget</span> <span class="p">{</span>
+  <span class="kd">static</span> <span class="k">const</span> <span class="n">routeName</span> <span class="o">=</span> <span class="s2">&quot;/book-add&quot;</span><span class="p">;</span>
+
+  <span class="nd">@override</span>
+  <span class="n">_BookInputScreenState</span> <span class="n">createState</span><span class="p">()</span> <span class="o">=&gt;</span> <span class="n">_BookInputScreenState</span><span class="p">();</span>
+<span class="p">}</span>
+
+<span class="kd">class</span> <span class="nc">_BookInputScreenState</span> <span class="kd">extends</span> <span class="n">State</span><span class="o">&lt;</span><span class="n">BookInputScreen</span><span class="o">&gt;</span> <span class="p">{</span>
+  <span class="kt">String</span> <span class="n">_title</span><span class="p">;</span>
+  <span class="kt">bool</span> <span class="n">_inputIsValid</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+  <span class="n">BookInputScreenArguments</span> <span class="n">_args</span><span class="p">;</span>
+<span class="hll">  <span class="kt">bool</span> <span class="n">_isInitialized</span><span class="p">;</span> <span class="c1">// Berfungsi untuk mencegah pemanggilan ganda</span>
+</span>
+  <span class="n">File</span> <span class="n">_image</span><span class="p">;</span>
+  <span class="kd">final</span> <span class="n">picker</span> <span class="o">=</span> <span class="n">ImagePicker</span><span class="p">();</span>
+
+  <span class="n">Future</span> <span class="n">_pickImage</span><span class="p">()</span> <span class="kd">async</span> <span class="p">{</span>
+    <span class="kd">final</span> <span class="n">pickedFile</span> <span class="o">=</span> <span class="kd">await</span> <span class="n">picker</span><span class="p">.</span><span class="n">getImage</span><span class="p">(</span><span class="k">source</span><span class="o">:</span> <span class="n">ImageSource</span><span class="p">.</span><span class="n">gallery</span><span class="p">);</span>
+
+    <span class="n">setState</span><span class="p">(()</span> <span class="p">{</span>
+      <span class="k">if</span> <span class="p">(</span><span class="n">pickedFile</span> <span class="o">!=</span> <span class="kc">null</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">_image</span> <span class="o">=</span> <span class="n">File</span><span class="p">(</span><span class="n">pickedFile</span><span class="p">.</span><span class="n">path</span><span class="p">);</span>
+
+        <span class="k">this</span><span class="p">.</span><span class="n">_setInputValid</span><span class="p">();</span>
+      <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="n">print</span><span class="p">(</span><span class="s1">&#39;No image selected.&#39;</span><span class="p">);</span>
+      <span class="p">}</span>
+    <span class="p">});</span>
+  <span class="p">}</span>
+
+<span class="hll">  <span class="nd">@override</span>
+</span><span class="hll">  <span class="kt">void</span> <span class="n">didChangeDependencies</span><span class="p">()</span> <span class="p">{</span>
+</span><span class="hll">    <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="n">_isInitialized</span> <span class="o">==</span> <span class="kc">null</span> <span class="o">||</span> <span class="o">!</span><span class="k">this</span><span class="p">.</span><span class="n">_isInitialized</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="hll">      <span class="k">this</span><span class="p">.</span><span class="n">_args</span> <span class="o">=</span> <span class="n">ModalRoute</span><span class="p">.</span><span class="n">of</span><span class="p">(</span><span class="n">context</span><span class="p">).</span><span class="n">settings</span><span class="p">.</span><span class="n">arguments</span><span class="p">;</span>
+</span><span class="hll">      <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="n">_args</span> <span class="o">!=</span> <span class="kc">null</span> <span class="o">&amp;&amp;</span> <span class="k">this</span><span class="p">.</span><span class="n">_args</span><span class="p">.</span><span class="n">id</span> <span class="o">!=</span> <span class="kc">null</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="hll">        <span class="k">this</span><span class="p">.</span><span class="n">_title</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="n">_args</span><span class="p">.</span><span class="n">title</span><span class="p">;</span>
+</span><span class="hll">      <span class="p">}</span>
+</span><span class="hll">
+</span><span class="hll">      <span class="k">this</span><span class="p">.</span><span class="n">_setInputValid</span><span class="p">();</span>
+</span><span class="hll">      <span class="k">this</span><span class="p">.</span><span class="n">_isInitialized</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+</span><span class="hll">    <span class="p">}</span>
+</span><span class="hll">    <span class="k">super</span><span class="p">.</span><span class="n">didChangeDependencies</span><span class="p">();</span>
+</span><span class="hll">  <span class="p">}</span>
+</span><span class="hll">
+</span>  <span class="kt">void</span> <span class="n">_setInputValid</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="n">_inputIsValid</span> <span class="o">=</span>
+        <span class="k">this</span><span class="p">.</span><span class="n">_title</span> <span class="o">!=</span> <span class="kc">null</span> <span class="o">&amp;&amp;</span> <span class="k">this</span><span class="p">.</span><span class="n">_title</span> <span class="o">!=</span> <span class="s2">&quot;&quot;</span> <span class="o">&amp;&amp;</span> <span class="k">this</span><span class="p">.</span><span class="n">_image</span> <span class="o">!=</span> <span class="kc">null</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="p">...</span>
+</code></pre></div>
+</td></tr></table>
+<p>Pada code diatas, variable <code>_isInitialized</code> berfungsi untuk memastikan pengesetan input "title" hanya terjadi satu kali. Karena <em>lifecycle</em> <code>didChangeDependencies()</code> akan dipanggil beberapa kali pada proses "inisialisasi" sebuah <em>widget</em>.</p>
+<p>Simpan perubahan dan jalankan aplikasi. Seharusnya saat menekan tombol edit, field input "title" akan otomatis terisi sesuai nilai sekarang dari buku yang kita edit.</p>
                 
               
               
