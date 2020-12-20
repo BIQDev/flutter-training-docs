@@ -35,5 +35,9 @@
      <loc>https://biqdev.com/tutorial/flutter/crud-rest-api/create-then-read/</loc>
      <lastmod>2020-12-20</lastmod>
      <changefreq>daily</changefreq>
+    </url><url>
+     <loc>https://biqdev.com/tutorial/flutter/crud-rest-api/update/</loc>
+     <lastmod>2020-12-20</lastmod>
+     <changefreq>daily</changefreq>
     </url>
 </urlset>

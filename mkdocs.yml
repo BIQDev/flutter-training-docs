@@ -38,5 +38,6 @@ nav:
     - '(C)reate': 'crud-rest-api/create.md'
     - '(R)ead': 'crud-rest-api/read.md'
     - '(C)eate kemudian (R)ead': 'crud-rest-api/create-then-read.md'
+    - '(U)pdate': 'crud-rest-api/update.md'
 
 copyright: "Copyright &copy; 2020 www.biqdev.com;"
