@@ -83,6 +83,7 @@ Logic tersebut sudah tersedia pada `lib/screens/book-input.dart`. Hanya saja kit
             : const Text("Edit Buku"),
       ),
       body: Padding(
+  ...
 ```
 
 Sekarang, coba simpan dan jalankan aplikasi android kita, kemudian click/tap icon "edit" pada salah satu buku. Seharusnya "screen" dari input kita akan memiliki title "Edit Buku" pada bagian kiri atas. Bukan "Tambah buku" seperti pada prosedur (C)reate.

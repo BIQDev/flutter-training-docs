@@ -508,7 +508,8 @@
 93
 94
 95
-96</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>  <span class="p">...</span>
+96
+97</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>  <span class="p">...</span>
   <span class="nd">@override</span>
   <span class="n">Widget</span> <span class="n">build</span><span class="p">(</span><span class="n">BuildContext</span> <span class="n">context</span><span class="p">)</span> <span class="p">{</span>
     <span class="kt">bool</span> <span class="n">isCreating</span> <span class="o">=</span> <span class="n">context</span><span class="p">.</span><span class="n">watch</span><span class="o">&lt;</span><span class="n">BookListProvider</span><span class="o">&gt;</span><span class="p">().</span><span class="n">isCreating</span><span class="p">;</span>
@@ -520,6 +521,7 @@
             <span class="o">:</span> <span class="k">const</span> <span class="n">Text</span><span class="p">(</span><span class="s2">&quot;Edit Buku&quot;</span><span class="p">),</span>
       <span class="p">),</span>
       <span class="nl">body:</span> <span class="n">Padding</span><span class="p">(</span>
+  <span class="p">...</span>
 </code></pre></div>
 </td></tr></table>
 <p>Sekarang, coba simpan dan jalankan aplikasi android kita, kemudian click/tap icon "edit" pada salah satu buku. Seharusnya "screen" dari input kita akan memiliki title "Edit Buku" pada bagian kiri atas. Bukan "Tambah buku" seperti pada prosedur (C)reate.</p>
