@@ -496,7 +496,7 @@
 <p>Pada dasarnya kita memanggil UI yang sama dengan yang kita gunakan untuk (C)reate. Untuk membedakan tampilan input UI nya, kita menggunakan <em>property</em> <code>argument</code>. <em>Property</em> tersebut adalah bagian dari <code>Navigator.of(context).pushNamed()</code>.</p>
 <p>Penggunaan <code>argument</code> tersebut bisa dilihat pada code diatas baris ke-20, yaitu <code>arguments: BookInputScreenArguments(...)</code></p>
 <p>Logic nya adalah, jika <code>title</code> pada <code>argument</code> kosong, maka UI input screen <code>BookInputScreen</code> akan memiliki <em>behavior</em> mode (C)reate. Sebaliknya, jika <code>title</code> pada <code>argument</code> berisi string tertentu, maka UI input screen <code>BookInputScreen</code> akan pada mode (U)pdate.</p>
-<p>Logic tersebut sudah tersedia pada <code>lib/screens/book-input.dart</code>. Hanya saja kita perlu sedikit menambahkan code untuk "mengamil <code>argument</code>" yang kita kirim dari <code>arguments: BookInputScreenArguments()</code> pada code diatas. Mari kita buka file <code>lib/screens/book-input.dart</code>, tambah/ubah code seperti pada baris ter-<em>highlight</em> berikut:</p>
+<p>Logic tersebut sudah tersedia pada <code>lib/screens/book-input.dart</code>. Hanya saja kita perlu sedikit menambahkan code untuk "mengambil <code>argument</code>" yang kita kirim dari <code>arguments: BookInputScreenArguments()</code> pada code diatas. Mari kita buka file <code>lib/screens/book-input.dart</code>, tambah/ubah code seperti pada baris ter-<em>highlight</em> berikut:</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>85
 86
 87

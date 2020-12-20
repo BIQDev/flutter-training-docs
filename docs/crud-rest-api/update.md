@@ -68,7 +68,7 @@ Penggunaan `argument` tersebut bisa dilihat pada code diatas baris ke-20, yaitu 
 
 Logic nya adalah, jika `title` pada `argument` kosong, maka UI input screen `BookInputScreen` akan memiliki *behavior* mode (C)reate. Sebaliknya, jika `title` pada `argument` berisi string tertentu, maka UI input screen `BookInputScreen` akan pada mode (U)pdate.
 
-Logic tersebut sudah tersedia pada `lib/screens/book-input.dart`. Hanya saja kita perlu sedikit menambahkan code untuk "mengamil `argument`" yang kita kirim dari `arguments: BookInputScreenArguments()` pada code diatas. Mari kita buka file `lib/screens/book-input.dart`, tambah/ubah code seperti pada baris ter-*highlight* berikut:
+Logic tersebut sudah tersedia pada `lib/screens/book-input.dart`. Hanya saja kita perlu sedikit menambahkan code untuk "mengambil `argument`" yang kita kirim dari `arguments: BookInputScreenArguments()` pada code diatas. Mari kita buka file `lib/screens/book-input.dart`, tambah/ubah code seperti pada baris ter-*highlight* berikut:
 
 ```dart linenums="85" hl_lines="5"
   ...
